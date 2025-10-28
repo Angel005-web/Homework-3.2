@@ -1,0 +1,122 @@
+Invitations Website Demo (invu.ge) – განახლებული რეგისტრაციის ტესტ ქეისები
+ტესტ ქეისი #1 – მომხმარებლის წარმატებული რეგისტრაცია
+
+Description: ახალი მომხმარებლის რეგისტრაციის შემოწმება სწორი მონაცემებით — ფორმის გახსნა „Sign Up Here“-დან, ველების შევსება და ანგარიშის შექმნა.
+
+Pre-conditions:
+- მომხმარებელი არ არის ავტორიზებული
+- ელფოსტა არ არის დარეგისტრირებული სისტემაში
+- საიტი ხელმისაწვდომია (https://invu.ge)
+
+Steps:
+1. გახსენით მთავარი გვერდი.
+2. დააჭირეთ ღილაკს "შესვლა" (Sign In).
+3. გამოჩნდება ფანჯარა "Welcome Back".
+4. ქვემოთ დააჭირეთ ბმულს "Sign up here".
+5. გამოჩნდება რეგისტრაციის ფორმა.
+6. შეავსეთ ყველა ველი ვალიდური მონაცემებით:
+   - სახელი: Nino
+   - გვარი: Beridze
+   - ელფოსტა: nino.beridze@test.com
+   - პაროლი: Test@1234
+7. დააჭირეთ ღილაკს "Sign Up".
+
+Expected Result:
+- სისტემა აჩვენებს შეტყობინებას "Registration successful" ან გადაგიყვანს Dashboard-ზე.
+- მომხმარებელი ავტომატურად ავტორიზებულია.
+
+Meta:
+Severity: Critical
+Priority: High
+Behavior: Positive
+Type: Functional
+Layer: UI + Backend
+Tags: Registration, Authentication, NewUser
+
+ტესტ ქეისი #2 – რეგისტრაცია უკვე არსებული ელფოსტით
+
+Description: რეგისტრაციის შემოწმება უკვე დარეგისტრირებული ელფოსტით.
+
+Pre-conditions: ელფოსტა უკვე დარეგისტრირებულია სისტემაში.
+
+Steps:
+1. გახსენით მთავარი გვერდი.
+2. დააჭირეთ "Sign In".
+3. შემდეგ ბმულს "Sign Up Here".
+4. შეიყვანეთ უკვე არსებული ელფოსტა და სხვა ვალიდური მონაცემები.
+5. დააჭირეთ "Sign Up".
+
+Expected Result:
+- გამოჩნდება შეტყობინება "This email is already registered".
+- ახალი ანგარიში არ იქმნება.
+
+Meta:
+Severity: Medium
+Priority: High
+Behavior: Negative
+Type: Validation
+Layer: Backend + UI
+
+ტესტ ქეისი #3 – რეგისტრაცია არამთხვეული პაროლებით
+
+Description: რეგისტრაციის შემოწმება განსხვავებული პაროლით და პაროლის დადასტურებით.
+
+Steps:
+1. გახსენით Sign Up ფორმა.
+2. შეიყვანეთ ყველა ველი ვალიდურად, მაგრამ
+   - პაროლი: Test@1234
+   - Confirm Password: Test@12345
+3. დააჭირეთ "Sign Up".
+
+Expected Result:
+- ჩნდება შეტყობინება "Passwords do not match".
+- ახალი ანგარიში არ იქმნება.
+
+Meta:
+Severity: Low
+Priority: Medium
+Behavior: Negative
+Type: Validation
+Layer: UI
+
+ტესტ ქეისი #4 – ცარიელი ველებით რეგისტრაცია
+
+Description: რეგისტრაციის ფორმის გაგზავნა ცარიელი ველებით.
+
+Steps:
+1. გახსენით Sign Up ფორმა.
+2. არ შეავსოთ არცერთი ველი.
+3. დააჭირეთ "Sign Up".
+
+Expected Result:
+- ყველა ველთან ჩნდება შეტყობინება "This field is required".
+- ანგარიში არ იქმნება.
+
+Meta:
+Severity: Low
+Priority: Medium
+Behavior: Negative
+Type: Validation
+Layer: UI
+
+ტესტ ქეისი #5 – რეგისტრაცია არავალიდური ელფოსტით
+
+Description: რეგისტრაციის ფორმის შემოწმება არავალიდური ელფოსტის ფორმატით.
+
+Steps:
+1. გახსენით Sign Up ფორმა.
+2. შეიყვანეთ ელფოსტა nino@com.
+3. შეავსეთ დანარჩენი ველები სწორად.
+4. დააჭირეთ "Sign Up".
+
+Expected Result:
+- გამოჩნდება შეტყობინება "Invalid email format".
+- ახალი ანგარიში არ იქმნება.
+
+Meta:
+Severity: Medium
+Priority: Medium
+Behavior: Negative
+Type: Validation
+Layer: UI
+
